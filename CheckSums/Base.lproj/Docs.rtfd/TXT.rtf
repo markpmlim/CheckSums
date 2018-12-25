@@ -1,0 +1,230 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\vieww20800\viewh13080\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs34 \cf0 \ul \ulc0 Introduction\ulnone \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 CheckSums
+\b0  for macOS is written in Swift 3.0. It is developed with Xcode 8.0 with a deployment target of 10.9. The program should have little problems running under macOS 10.9 or later.\
+\
+The job of 
+\b CheckSums
+\b0  is to generate a checksum (aka message digest) for a file to be uploaded onto or had been downloaded from the Internet.\
+\
+\
+There are 2 options or operating modes.\
+\
+\
+
+\b Option A: Single File Processing
+\b0 \
+\
+\
+This option is recommended for huge files 650 MB (CD image) and above.\
+\
+The user has to \
+1)  drag-and-drop a file onto the text edit field to the right of the label field named \'93
+\b Path:
+\b0 \'94, and\
+\
+2) click on the \'93
+\b Generate
+\b0 \'94 button.\
+\
+Note: the text field labelled \'93
+\b Path:
+\b0 \'94 must not be empty.\
+\
+Fig. 1 show a snap shot of 
+\b CheckSums
+\b0  in the process of generating the message digest of a large file (8 GB). Notice the \'93
+\b Cancel
+\b0 \'94 button is enabled and the \'93
+\b Generate
+\b0 \'94 button is disabled.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Pasted Graphic 1.tiff \width14100 \height7780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\fs34 \cf0 Fig. 1\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+The user may abort the process by clicking on the \'93
+\b Cancel
+\b0 \'94 button.\
+\
+A circular progress indicator at the lower left corner of the window is used to provide some feedback to the user informing him there is an ongoing background activity.\
+\
+The program defaults to generating an 
+\b SHA1
+\b0  checksum. The user may select any one of the other options within the box labeled \'93
+\b CheckSum:
+\b0 \'94 if the default is not appropriate. The option \'93
+\b MD5
+\b0 \'94 is provided for legacy reasons.\
+\
+\
+Fig. 2 is a snap shot of 
+\b CheckSums\'92s
+\b0  window after a successful message digest generation of the 8 GB file.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Pasted Graphic 3.tiff \width14100 \height7780 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\fs34 \cf0 \
+Fig. 2\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+The generated checksum next to the label \'93
+\b Hash:
+\b0 \'94 is selectable. The user can copy the text and paste to any text editor.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 CheckSums
+\b0  does not support generating checksums for file packages e.g. applications as well as hidden files. See below (Under the hood) for further details.\
+\
+Naturally, the user may place a single (huge) file within an ordinary folder on the macOS desktop and apply 
+\b option B
+\b0  to save the generated checksum to a text file of his/her choice.\
+\
+\
+
+\b Option B: Batch Files Processing
+\b0 \
+\
+This useful for generating the checksums of lots of small files. These files must be placed in an ordinary folder. 
+\b CheckSums
+\b0  will generate checksums for all files including those within sub-folders. File packages and hidden files will not be processed; symbolic links will not be followed. Mount points are not supported.\
+\
+To apply this option, just drag-and-drop the 
+\b folder
+\b0  and click on the \'93
+\b Generate
+\b0 \'94 button as described above.\
+\
+Fig. 3 is a snap shot of the Save Panel displayed when 
+\b CheckSums
+\b0  has determined the user has dropped  a folder of files onto the \'93
+\b Path:\'94
+\b0  textfield.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic Pasted Graphic.tiff \width14240 \height9400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
+
+\fs34 \cf0 Fig. 3\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+The user will be prompted for the name of the text file for storing the generated checksums. It\'92s advisable not to use a location whose path  contains the name of the dropped folder. The default file name \'93
+\i CheckSums.txt
+\i0 \'94 had been hard-coded into the program.\
+\
+As mentioned above, the \'93
+\b Cancel
+\b0 \'94 button can be used to abort the process.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 CheckSum Option
+\b0 \
+\
+The user may select the type of message digest to be generated for a file during Single File or Batch Files processing. Apple\'92s software updates usually uses SHA1 (Secure Hash Algorithm).\
+\
+\
+
+\b Concurrency Option
+\b0 \
+\
+The slider is used to set the number of tasks that can run concurrently during batch files processing. An instance of NSOperation will be instantiated for each file whose message digest is to be generated. \
+A value of 1 means the tasks will be executed consecutively one task at a time. A value of 4 means up to 4 tasks may be performed at any one time.\
+The user can choose a value that is optimal for his/her system with no blocking of the main UI queue. If the selected value is too high, a multicoloured beach may be displayed. The default value is 4.  The maximum value is 32. There are a total of 8 intervals which means each tick mark represents a multiple of 4. A value of 0 means the default value 4.\
+\
+\
+
+\b Quit CheckSums Menu Item
+\b0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i \cf0 Caution
+\i0 : If there is/are one or more ongoing processes,  CheckSums will attempt to terminate all processes without asking. \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 Close Menu Item
+\b0 \
+\
+This is the preferred option for quitting the program. The user will be prompted to confirm he/she wants to quit. \
+\
+\
+
+\b Help Menu Item
+\b0 \
+\
+Control will be passed to the default editor TextEdit which will load this file and display its contents.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 \ul Under the hood
+\b0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone \
+Since a file to be uploaded on to or downloaded from the Internet can be extremely large e.g. 4GB, the generation of the checksum is performed on a secondary thread. This ensures the UI of the program will not be blocked. However, to prevent repeated clicks on the \'93
+\b Generate
+\b0 \'94 button, this widget will be disabled on the first click. At the same time the \'93
+\b Cancel
+\b0 \'94 button will be enabled to allow the user to stop the generation process which might (in his view) taking an inordinately long time.\
+\
+Note: macOS applications are not files but special folders (file packages). On macOS, there are many such packages; the user should be aware of such folders. 
+\b CheckSums
+\b0  will not generate a check sum on a directory special or otherwise.\
+\
+Identification of a file package is very easy. Just control-click (right-click if the user is using a 2-button mouse) on a file on the macOS desktop. The pop-up contextual menu will have a menu item labeled \'93
+\i Show Package Contents
+\i0 \'94 if the file is actually a special folder.\
+\
+Hidden files (names of files which starts with a dot) are ignored. Symbolic links and mount points are not supported.\
+\
+The actual work of  generating a checksum is done by calling Apple\'92s 
+\b CommonCrypto
+\b0  C library. 
+\b CheckSums
+\b0  creates an instance of Operation which reads the file in chunks of 100 MB and passes the data to the methods of 
+\b CommonCrypto
+\b0 . So if 
+\b option B
+\b0  is chosen, there may be many tasks being run in the background. The last task will send a message to 
+\b CheckSums
+\b0  to write out the results to a text file. \
+\
+It follows that there is only 1 task  when an ordinary file is dropped onto the \'93
+\b Path:
+\b0 \'94 textfield. For this case, its hash value will be returned and displayed in the text field labelled \'93
+\b Hash:
+\b0 \'94.\
+\
+Warning: The textfield labelled \'93
+\b Path:\'94
+\b0  should be blank before dropping a file/folder onto it. \
+Hint: Pressing Cmd-Z may clear the entire field. Alternatively, highlight the entire text and press Delete/Backspace/Cmd-Z.\
+\
+Finally, full, instead of relative pathnames are written to the checksum file to enable easy checking manually. If the user discovers a missing file and its associated checksum from the list, the system.log may have an entry related to this file. The user may use the application /Applications/Utilities/Console.app to check the system.log}

@@ -1,0 +1,12 @@
+//
+//  CommonCrypto.xcconfig
+//  SwiftCommonCrypto
+//
+//  Created by Mark Lim on 1/22/17.
+//  Copyright © 2017 Incremental Innovation. All rights reserved.
+//
+// Note: contents of module map (CommonCrypto folder) must be edited if XCode is running
+// on a different another OS
+MODULEMAP_FILE[sdk=iphoneos*]        = $(SRCROOT)/CommonCrypto/iphoneos.modulemap
+MODULEMAP_FILE[sdk=iphonesimulator*] = $(SRCROOT)/CommonCrypto/iphonesimulator.modulemap
+MODULEMAP_FILE[sdk=macosx*]          = $(SRCROOT)/CommonCrypto/macosx.modulemap
